@@ -11,3 +11,6 @@ ARGUMENTS
     -host   host                localhost
     -port   port                8080
     -wait   wait interval (ms)  8000
+
+BUILD
+    Run `make' to generate the binary in `./bin'/
