@@ -6,8 +6,8 @@ USAGE
     sloth -host {host} -port {port} -wait {N}
 
 ARGUMENTS
-    flag    description         default
-    ----    -----------         -------
+    flag    description         defaults
+    ----    -----------         --------
     -host   host                localhost
     -port   port                8080
     -wait   wait interval (ms)  8000

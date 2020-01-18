@@ -27,8 +27,8 @@ func usage() {
 			"usage:\n" +
 			"  sloth -host {host} -port {port} -wait {N}\n" +
 			"arguments:\n" +
-			"  flag    description         default\n" +
-			"  ----    -----------         -------\n" +
+			"  flag    description         defaults\n" +
+			"  ----    -----------         --------\n" +
 			"  -host   host                localhost\n" +
 			"  -port   port                8080\n" +
 			"  -wait   wait interval (ms)  8000\n",
