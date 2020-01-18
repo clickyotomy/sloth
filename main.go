@@ -10,17 +10,7 @@ import (
 	"time"
 )
 
-func garbage() []byte {
-	var (
-		num = rand.Intn(1024 * 1024)
-		buf = make([]byte, num)
-	)
-
-	rand.Seed(time.Now().UnixNano())
-	rand.Read(buf)
-	return buf
-}
-
+// usage displays the program help.
 func usage() {
 	fmt.Printf(
 		"sloth: A stupid HTTP tarpit.\n\n" +
@@ -35,6 +25,20 @@ func usage() {
 	)
 }
 
+// garbage generates a random number of bytes.
+func garbage() []byte {
+	var (
+        // Send (at most) one megabyte of data per iteration.
+		num = rand.Intn(1024 * 1024)
+		buf = make([]byte, num)
+	)
+
+	rand.Seed(time.Now().UnixNano())
+	rand.Read(buf)
+	return buf
+}
+
+// tarpit does all the work: logging, looping and responding to requests.
 func tarpit(t *time.Ticker, w http.ResponseWriter, r *http.Request) {
 	var buf []byte
 
@@ -67,11 +71,14 @@ func main() {
 
 	flag.Parse()
 
+    // Setup a timer based on the given interval.
 	tick = time.NewTicker(time.Duration(*wait) * time.Millisecond)
 
+    // Setup the request handler.
 	http.HandleFunc("/", func(wtr http.ResponseWriter, rdr *http.Request) {
 		tarpit(tick, wtr, rdr)
 	})
 
+    // Serve!
 	log.Fatal(http.ListenAndServe(fmt.Sprintf("%s:%s", *host, *port), nil))
 }
