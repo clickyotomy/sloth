@@ -13,4 +13,4 @@ ARGUMENTS
     -wait   wait interval (ms)  8000
 
 BUILD
-    Run `make' to generate the binary in `./bin'/
+    Run `make' to generate the binary in `./bin'.
